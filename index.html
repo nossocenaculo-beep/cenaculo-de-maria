@@ -1,64 +1,387 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cenáculo de Maria</title>
-    <!-- Importa o arquivo CSS -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Inclui a biblioteca Font Awesome para ícones de redes sociais -->
-    <link rel="stylesheet" href="cdnjs.cloudflare.com">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maria entre os Doutores • Tiepolo</title>
+  <style>
+    :root {
+      --cor-primaria: #8b6f47;
+      --cor-secundaria: #3a5f7a;
+      --cor-fundo: #f8f1e9;
+      --cor-texto: #4a3f35;
+      --cor-suave: #d4c4b0;
+      --menu-bg: #8b6f47;
+      --menu-hover: #a5895e;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Georgia', serif;
+      background-color: var(--cor-fundo);
+      color: var(--cor-texto);
+      line-height: 1.7;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ===== MENU LATERAL FIXO ===== */
+    #sidebar {
+      width: 320px;
+      background: linear-gradient(to bottom, var(--menu-bg), #6b5536);
+      color: white;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+      padding: 30px 20px;
+      box-shadow: 5px 0 20px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+    #sidebar h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+      color: #fff;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    }
+    .menu-item {
+      background: rgba(255,255,255,0.15);
+      margin: 8px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .menu-item:hover { background: var(--menu-hover); }
+    .menu-item > div {
+      padding: 18px 20px;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    .submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background: rgba(0,0,0,0.2);
+    }
+    .submenu a {
+      display: block;
+      padding: 14px 40px;
+      color: #f0e6d2;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+    }
+    .submenu a:hover {
+      background: rgba(255,255,255,0.2);
+      padding-left: 50px;
+      color: white;
+    }
+
+    /* ===== CONTEÚDO PRINCIPAL ===== */
+    #main {
+      margin-left: 320px;
+      flex: 1;
+      min-height: 100vh;
+    }
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(248,241,233,0.4), rgba(248,241,233,0.7)),
+                  url('img/BannerTopoSite.jpg') center/cover no-repeat fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 5rem;
+      color: white;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+      letter-spacing: 6px;
+    }
+
+    .content-area {
+      padding: 80px 60px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .page {
+      display: none;
+      animation: fadeIn 0.8s ease-in;
+    }
+    .page.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h2 {
+      font-size: 3rem;
+      color: var(--cor-primaria);
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: var(--cor-primaria);
+      margin: 20px auto;
+      border-radius: 2px;
+    }
+    p { font-size: 1.25rem; margin-bottom: 1.5rem; text-align: justify; color: #555; }
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(139,111,71,0.15);
+      margin: 40px 0;
+    }
+
+    footer {
+      background: linear-gradient(to top, #8b6f47, #a5895e);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      font-size: 1.1rem;
+      margin-left: 320px;
+    }
+
+    /* Responsivo */
+    @media (max-width: 992px) {
+      #sidebar { width: 280px; }
+      #main, footer { margin-left: 280px; }
+      .hero h1 { font-size: 3.8rem; }
+    }
+    @media (max-width: 768px) {
+      body { flex-direction: column; }
+      #sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding-bottom: 0;
+      }
+      #main, footer { margin-left: 0; }
+      .hero h1 { font-size: 3rem; }
+    }
+	footer {
+  margin-left: 0 !important;
+  padding: 0;
+  background: transparent;
+}
+
+footer div {
+  background: linear-gradient(to right, #8b6f47, #a5895e);
+  color: white;
+  text-align: center;
+  padding: 16px 20px;
+  font-size: 0.93rem;
+  font-weight: 300;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+  </style>
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <h1>Cenáculo de Maria</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#aparicoes">Aparições Marianas</a></li>
-                <li><a href="#oracoes">Orações</a></li>
-            </ul>
-        </nav>
+  <!-- MENU LATERAL -->
+  <nav id="sidebar">
+    <h2>Cenáculo de Maria</h2>
+
+    <div class="menu-item">
+      <div onclick="toggleSubmenu('aparicoes')">Aparições Marianas</div>
+      <div id="aparicoes" class="submenu">
+        <a href="#" onclick="showPage('pilar')">     Pilar (40)    </a>
+        <a href="#" onclick="showPage('lourdes')">    Lourdes (1858)   </a>
+        <a href="#" onclick="showPage('guadalupe')">  Guadalupe (1531) </a>
+        <a href="#" onclick="showPage('la-salette')"> La Salette (1846)</a>
+        <a href="#" onclick="showPage('pontmain')">   Pontmain (1871)  </a>
+      </div>
     </div>
-</header>
 
-<!-- Adicionei um ID para manipular via JS, se desejar -->
-<div class="header-image" id="headerImage">
-    <h2>O Envio do Espírito Santo sobre Maria e os Apóstolos</h2>
-</div>
+    <div class="menu-item">
+      <div onclick="toggleSubmenu('doutrina')">Doutrina Mariana</div>
+      <div id="doutrina" class="submenu">
+        <a href="#" onclick="showPage('imaculada')">Imaculada Conceição</a>
+        <a href="#" onclick="showPage('assuncao')">Assunção de Maria</a>
+        <a href="#" onclick="showPage('maternidade')">Maternidade Divina</a>
+        <a href="#" onclick="showPage('corredentora')">Co-redentora</a>
+      </div>
+    </div>
 
-<main class="container">
-    <section id="home">
-        <h3>Bem-vindo</h3>
-        <p>Este é o espaço principal da sua página. A Virgem Maria encorajou os discípulos no cenáculo, invocando a presença do Espírito Santo.</p>
-    </section>
+    <div class="menu-item">
+      <div onclick="toggleSubmenu('devocao')">Devoção</div>
+      <div id="devocao" class="submenu">
+        <a href="#" onclick="showPage('rosario')">Santo Rosário</a>
+        <a href="#" onclick="showPage('escapulario')">Escapulário do Carmo</a>
+        <a href="#" onclick="showPage('consagracao')">Consagração a Maria</a>
+      </div>
+    </div>
 
-    <section id="aparicoes">
-        <h3>Aparições Marianas</h3>
-        <p>Seção dedicada a listar e descrever as aparições de Nossa Senhora.</p>
-    </section>
+    <div class="menu-item">
+      <div onclick="toggleSubmenu('santos')">Santos Marianos</div>
+      <div id="santos" class="submenu">
+        <a href="#" onclick="showPage('luis')">São Luís de Montfort</a>
+        <a href="#" onclick="showPage('maximiliano')">São Maximiliano Kolbe</a>
+        <a href="#" onclick="showPage('joao')">São João Paulo II</a>
+      </div>
+    </div>
+  </nav>
 
-    <section id="oracoes">
-        <h3>Orações</h3>
-        <p>Seção com diversas orações marianas.</p>
-    </section>
-</main>
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main id="main">
+    <!-- Hero -->
+    <header class="hero">
+      <h1>Cenáculo de Maria</h1>
+    </header>
 
-<footer>
-    <div class="container">
-        <p>&copy; <span id="currentYear"></span> Cenáculo de Maria</p>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/cenaculo.de.maria.oficial" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/cenaculodemariaoficial" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://youtube.com/@cenaculodemariaoficial1544" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <div class="content-area">
+
+      <!-- Página Inicial -->
+      <div id="home" class="page active">
+        <h2>Bem-vindo ao Cenáculo de Maria</h2>
+        <div class="card">
+          <p>Este espaço é dedicado ao estudo, contemplação e aprofundamento da Virgem Maria na vida da Igreja e na história da salvação.</p>
+          <p>Use o menu ao lado para navegar pelas principais aparições, verdades dogmáticas e caminhos de devoção mariana.</p>
         </div>
+      </div>
+
+      <!-- Exemplo de páginas (você vai preenchendo) -->
+      <!-- NOSSA SENHORA DO PILAR -->
+      <div id="pilar" class="page">
+        <h2>Nossa Senhora do Pilar</h2>
+
+        <div class="card">
+          <p><strong>Onde:</strong> Zaragoza, Espanha – às margens do rio Ebro<br>
+          <strong>Quando:</strong> 2 de janeiro do ano 40 d.C.<br>
+          <strong>A quem:</strong> São Tiago Maior, Apóstolo</p>
+          <p><em>É a primeira aparição mariana da história, ocorrida quando a Virgem Maria ainda vivia na terra.</em></p>
+        </div>
+
+        <div class="card">
+          <h3 style="text-align:center; color:var(--cor-primaria); margin-bottom:20px;">A História</h3>
+          <p>De acordo com a tradição antiquíssima e ininterrupta da Igreja na Espanha, na noite de 2 de janeiro do ano 40, São Tiago Maior encontrava-se às margens do rio Ebro, desanimado com as dificuldades da pregação. Enquanto rezava com alguns discípulos, pediu luz e auxílio à Santíssima Virgem, que ainda vivia em Jerusalém.</p>
+          
+          <p>Subitamente, o céu se iluminou. Anjos cantavam e transportavam uma coluna de jaspe resplandecente (o “Pilar”). Sobre essa coluna, em forma de lírio de luz, apareceu a Virgem Maria em corpo e alma, rodeada de esplendor, exatamente como orava em vida.</p>
+          
+          <p>Maria ordenou a São Tiago que ali fosse construída uma igreja, dizendo:</p>
+          <blockquote style="margin:30px 0; padding:20px; background:rgba(212,196,176,0.3); border-left:5px solid var(--cor-primaria); font-style:italic;">
+            “Este será o lugar onde a minha intercessão se firmará como uma coluna. Quando esta igreja estiver concluída, volta a Jerusalém, porque lá te espera o martírio.”
+          </blockquote>
+        </div>
+
+        <div class="card">
+          <h3 style="text-align:center; color:var(--cor-primaria); margin-bottom:20px;">Visão da Beata Anna Katharina Emmerick</h3>
+          <p>A mística alemã viu com detalhes a cena: anjos trazendo o pilar de luz, a Virgem de pé sobre a flor luminosa, o véu branco cobrindo-a até os pés, e um raio de luz que partia do Pilar em direção a Compostela, indicando o futuro sepulcro do Apóstolo.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="text-align:center; color:var(--cor-primaria); margin-bottom:20px;">A Basílica do Pilar</h3>
+          <p>A pequena capela primitiva erguida por São Tiago foi ampliada ao longo dos séculos até se tornar a grandiosa Basílica de Nossa Senhora do Pilar – o primeiro santuário mariano do mundo. O pilar de jaspe ainda hoje é visível e pode ser tocado e beijado pelos fiéis.</p>
+          <p>A Virgem do Pilar é invocada como <strong>Refúgio dos pecadores</strong>, <strong>Consoladora dos aflitos</strong> e <strong>Mãe da Espanha</strong>. Sua festa é celebrada a <strong>12 de outubro</strong> – mesma data do Descobrimento da América, razão pela qual a devoção se espalhou enormemente pela América Latina.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="text-align:center; color:var(--cor-primaria); margin-bottom:20px;">Palavras de São João Paulo II</h3>
+          <p>O Papa polonês visitou o santuário duas vezes e afirmou:</p>
+          <blockquote style="margin:30px 0; padding:20px; background:rgba(212,196,176,0.3); border-left:5px solid var(--cor-primaria); font-style:italic;">
+            “Maria tem que ser cada vez mais a pedagoga do Evangelho na América Latina (...) O amor à Virgem Maria, Mãe e Modelo da Igreja, é garantia da autenticidade e da eficácia redentora de nossa fé cristã.”
+          </blockquote>
+        </div>
+
+        <div class="card">
+          <h3 style="text-align:center; color:var(--cor-primaria); margin-bottom:20px;">Consagração a Nossa Senhora do Pilar</h3>
+          <p style="font-size:1.3rem; line-height:2; text-align:center;">
+            Virgem Imaculada! Minha Mãe! Maria!<br>
+            Eu vos renovo, hoje e para sempre<br>
+            a consagração de todo o meu ser para que disponhais de mim<br>
+            para o bem de todas as pessoas.<br><br>
+
+            Somente vos peço, minha Rainha e Mãe da Igreja,<br>
+            força para cooperar fielmente<br>
+            na vossa missão de trazer o Reino de Jesus ao mundo.<br><br>
+
+            Ofereço-vos, Coração Imaculado de Maria,<br>
+            as orações e os sacrifícios deste dia,<br>
+            para que, fiéis à nossa consagração,<br>
+            sejamos igualmente disponíveis a colaborar convosco<br>
+            na construção de um mundo novo.<br><br>
+
+            Ó Maria concebida sem pecado,<br>
+            rogai por nós que recorremos a vós<br>
+            e por todos quantos recorrem a vós,<br>
+            de modo particular as famílias da nossa comunidade<br>
+            que vos veneram com o título de Senhora do Pilar.<br><br>
+
+            <strong>Amém.</strong>
+          </p>
+        </div>
+
+        <p style="text-align:center; margin-top:40px; font-style:italic; color:#777;">
+          Bendita seja a hora<br>
+          em que a Virgem veio em carne mortal a Zaragoza.
+        </p>
+      </div>
+
+      <div id="lourdes" class="page">
+        <h2>Nossa Senhora de Lourdes</h2>
+        <div class="card">
+          <p>Em 1858, Bernadette Soubirous recebeu 18 aparições da Imaculada Conceição na gruta de Massabielle...</p>
+        </div>
+      </div>
+
+      <!-- Adicione quantas páginas quiser com o mesmo padrão -->
+      <div id="rosario" class="page">
+        <h2>O Santo Rosário</h2>
+        <div class="card">
+          <p>O Rosário é a oração que a própria Virgem recomendou em quase todas as suas aparições...</p>
+        </div>
+      </div>
+
     </div>
+<footer>
+  <div >
+    Cenáculo de Maria — Site Católico devocional e doutrinário
+  </div>
 </footer>
+  </main>
 
-<!-- Importa o arquivo JavaScript no final do body para melhor performance -->
-<script src="script.js"></script>
+  <script>
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById(id);
+      const isOpen = submenu.style.maxHeight && submenu.style.maxHeight !== '0px';
+      
+      // Fecha todos
+      document.querySelectorAll('.submenu').forEach(s => s.style.maxHeight = '0px');
+      
+      // Abre o clicado (se não estava aberto)
+      if (!isOpen) {
+        submenu.style.maxHeight = submenu.scrollHeight + "px";
+      }
+    }
 
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      
+      // Fecha os submenus em mobile
+      if (window.innerWidth <= 768) {
+        document.querySelectorAll('.submenu').forEach(s => s.style.maxHeight = '0px');
+      }
+      
+      // Rolagem suave para o topo do conteúdo
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Abre a página inicial por padrão
+    window.onload = () => showPage('home');
+  </script>
 </body>
 </html>
