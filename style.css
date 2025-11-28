@@ -212,3 +212,44 @@ footer div {
     }
     h2 { font-size: 1.85rem !important; }
 }
+
+/* ================== BOTÕES FLUTUANTES DE FONTE (SÓ CELULAR) ================== */
+#font-resizer {
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255,255,255,0.95);
+    padding: 12px 8px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(180,150,120,0.3);
+}
+
+#font-resizer button {
+    background: var(--cor-primaria, #b49676);
+    color: white;
+    border: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+
+#font-resizer button:active {
+    transform: scale(0.92);
+    background: #8b6f47;
+}
+
+/* Só aparece em telas menores que 850px (celular + tablet pequeno) */
+@media (min-width: 850px) {
+    #font-resizer { display: none !important; }
+}
