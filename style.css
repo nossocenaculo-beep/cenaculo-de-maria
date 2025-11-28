@@ -155,3 +155,56 @@ footer div {
   #main, footer { margin-left: 0; }
   .hero h1 { font-size: 3rem; }
 }
+/* ============================================= */
+/*  MELHOR LEGIBILIDADE NO CELULAR (obrigatório)  */
+/* ============================================= */
+
+@media (max-width: 768px) {
+    .card {
+        margin: 20px 12px !important;     /* dá mais espaço nas laterais */
+        padding: 22px 18px !important;   /* aumenta o “ar” interno */
+        border-radius: 16px !important;
+        font-size: 1.15rem !important;   /* texto um pouco maior no celular */
+        line-height: 1.75 !important;    /* espaçamento entre linhas mais confortável */
+    }
+
+    .card h3 {
+        font-size: 1.45rem !important;
+        margin-bottom: 18px !important;
+    }
+
+    .card p, .card ul, .card blockquote {
+        margin-bottom: 18px !important;
+    }
+
+    /* evita que imagens transborem da tela */
+    .card img {
+        max-width: 100% !important;
+        height: auto !important;
+        border-radius: 12px;
+        margin: 15px 0;
+    }
+
+    /* títulos das páginas ficam mais respirados */
+    h2 {
+        font-size: 1.8rem !important;
+        margin: 25px 15px 20px !important;
+        padding-bottom: 12px !important;
+    }
+
+    /* frase final em itálico no rodapé */
+    p[style*="text-align:center"][style*="italic"] {
+        margin: 50px 20px 30px !important;
+        font-size: 1.25rem !important;
+    }
+}
+
+/* Para telas bem pequenas (ex.: iPhone SE, Android antigos) */
+@media (max-width: 480px) {
+    .card {
+        margin: 18px 8px !important;
+        padding: 20px 15px !important;
+        font-size: 1.18rem !important;
+    }
+    h2 { font-size: 1.7rem !important; }
+}
