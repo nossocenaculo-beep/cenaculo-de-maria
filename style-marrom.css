@@ -234,3 +234,9 @@ footer {
 @media (min-width: 850px) {
     #font-resizer { display: none !important; }
 }
+footer a:hover {
+  transform: translateY(-6px) scale(1.08);
+}
+footer a svg {
+  transition: all 0.35s ease;
+}

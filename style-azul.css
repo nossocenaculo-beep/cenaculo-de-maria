@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&display=swap');
 
 :root {
-  --cor-primaria: #1e5f45;     /* verde-esmeralda profundo (muito mariano) */
-  --cor-secundaria: #2d8a63;  /* verde médio para hover e detalhes */
-  --cor-fundo: #f0f8f5;        /* fundo quase branco com leve tom verde-água */
-  --cor-texto: #1a3d2f;        /* texto escuro, mas suave */
-  --cor-suave: #94d1b3;         /* verde claro para destaques suaves */
-  --menu-bg: #1e5f45;
-  --menu-hover: #2d8a63;
+  --cor-primaria: #1e40af;     /* azul mariano profundo */
+  --cor-secundaria: #3b82f6;   /* azul celeste claro */
+  --cor-fundo: #eff6ff;        /* fundo azul bem clarinho */
+  --cor-texto: #1e293b;        /* texto quase preto suave */
+  --cor-suave: #93c5fd;        /* azul suave para detalhes */
+  --menu-bg: #1e40af;
+  --menu-hover: #2563eb;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,7 +29,7 @@ p[style*="italic"], footer {
   font-style: italic; 
 }
 
-/* Títulos sempre normais e levemente mais fortes */
+/* Títulos sempre normais e um pouco mais fortes */
 h1, h2, h3, h4, h5, h6, #sidebar h2, .card h3 { 
   font-style: normal; 
   font-weight: 600; 
@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6, #sidebar h2, .card h3 {
 /* MENU LATERAL */
 #sidebar {
   width: 320px;
-  background: linear-gradient(to bottom, var(--menu-bg), #16382b);
+  background: linear-gradient(to bottom, var(--menu-bg), #172554);
   color: white;
   position: fixed;
   top: 0; left: 0; bottom: 0;
@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6, #sidebar h2, .card h3 {
   font-size: 1.9rem;
   margin-bottom: 40px;
   color: #fff;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
 .menu-item { margin: 8px 0; border-radius: 8px; overflow: hidden; cursor: pointer; }
@@ -76,7 +76,7 @@ h1, h2, h3, h4, h5, h6, #sidebar h2, .card h3 {
 .submenu a {
   display: block;
   padding: 14px 40px;
-  color: #d4edda;
+  color: #dbeafe;
   text-decoration: none;
   font-size: 14.5px;
   font-style: italic;
@@ -88,12 +88,12 @@ h1, h2, h3, h4, h5, h6, #sidebar h2, .card h3 {
   color: white;
 }
 
-/* CONTEÚDO */
+/* CONTEÚDO PRINCIPAL */
 #main { margin-left: 320px; flex: 1; }
 
 .hero {
   height: 100vh;
-  background: linear-gradient(rgba(240,248,245,0.5), rgba(240,248,245,0.8)),
+  background: linear-gradient(rgba(239,246,255,0.5), rgba(239,246,255,0.8)),
               url('assets/BannerTopoSite.jpg') center/cover no-repeat fixed;
   display: flex;
   align-items: center;
@@ -103,7 +103,7 @@ h1, h2, h3, h4, h5, h6, #sidebar h2, .card h3 {
 .hero h1 {
   font-size: 5.5rem;
   color: white;
-  text-shadow: 0 5px 22px rgba(0,0,0,0.7);
+  text-shadow: 0 4px 20px rgba(0,0,0,0.7);
   letter-spacing: 6px;
 }
 
@@ -135,14 +135,14 @@ p, li, blockquote {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
   text-align: justify;
-  color: #1e4a38;
+  color: #334155;
 }
 
 .card {
   background: white;
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 12px 45px rgba(30,95,69,0.15);
+  box-shadow: 0 12px 45px rgba(30,64,175,0.15);
   margin: 40px 0;
   transition: transform 0.3s ease;
 }
@@ -161,70 +161,70 @@ footer {
 @media (max-width: 992px) {
   #sidebar { width: 280px; }
   #main, footer { margin-left: 280px; }
-  .hero h1 { font-size: 4.2rem; }
+  .hero h1 { font-size: 4rem; }
 }
 @media (max-width: 768px) {
   body { flex-direction: column; }
-  #sidebar { width: 100%; height: auto; position: relative; }
+  #sidebar { width: 100%; height: auto; position: relative; padding-bottom: 20px; }
   #main, footer { margin-left: 0; }
-  .hero h1 { font-size: 3.3rem; }
+  .hero h1 { font-size: 3.2rem; }
 }
 
-/* CELULAR – TEXTO SUPER RESPIRADO */
+/* MELHORIAS NO CELULAR – TEXTO RESPIRADO */
 @media (max-width: 768px) {
     .card {
-        margin: 24px 16px !important;
-        padding: 34px 28px !important;
-        border-radius: 22px !important;
-        font-size: 1.26rem !important;
-        line-height: 2 !important;
-        box-shadow: 0 10px 32px rgba(0,0,0,0.09) !important;
+        margin: 22px 15px !important;
+        padding: 32px 26px !important;
+        border-radius: 20px !important;
+        font-size: 1.24rem !important;
+        line-height: 1.95 !important;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
     }
-    .card h3 { font-size: 1.65rem !important; margin-bottom: 26px !important; }
-    h2 { font-size: 2.15rem !important; margin: 38px 22px 30px !important; }
+    .card h3 { font-size: 1.6rem !important; margin-bottom: 24px !important; }
+    h2 { font-size: 2.1rem !important; margin: 35px 20px 28px !important; }
     p[style*="text-align:center"][style*="italic"] {
-        margin: 70px 28px 50px !important;
-        font-size: 1.4rem !important;
-        line-height: 2.1 !important;
+        margin: 65px 25px 45px !important;
+        font-size: 1.38rem !important;
+        line-height: 2 !important;
     }
 }
 @media (max-width: 380px) {
-    .card { margin: 20px 12px !important; padding: 30px 22px !important; }
-    h2 { font-size: 1.95rem !important; }
+    .card { margin: 18px 10px !important; padding: 28px 20px !important; }
+    h2 { font-size: 1.9rem !important; }
 }
 
 /* BOTÕES FLUTUANTES DE FONTE (SÓ CELULAR) */
 #font-resizer {
     position: fixed;
-    bottom: 22px;
-    right: 16px;
+    bottom: 20px;
+    right: 15px;
     z-index: 9999;
     display: flex;
     flex-direction: column;
-    gap: 11px;
+    gap: 10px;
     background: rgba(255,255,255,0.97);
-    padding: 13px 9px;
+    padding: 12px 8px;
     border-radius: 50px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.22);
     backdrop-filter: blur(12px);
-    border: 1.5px solid rgba(30,95,69,0.3);
+    border: 1.5px solid rgba(30,64,175,0.25);
 }
 #font-resizer button {
     background: var(--cor-primaria);
     color: white;
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 5px 16px rgba(30,95,69,0.45);
+    box-shadow: 0 5px 15px rgba(30,64,175,0.4);
     transition: all 0.3s ease;
 }
 #font-resizer button:active {
-    transform: scale(0.89);
-    background: #16382b;
+    transform: scale(0.90);
+    background: #172554;
 }
 @media (min-width: 850px) {
     #font-resizer { display: none !important; }
