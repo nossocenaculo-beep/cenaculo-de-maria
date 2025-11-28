@@ -155,56 +155,60 @@ footer div {
   #main, footer { margin-left: 0; }
   .hero h1 { font-size: 3rem; }
 }
-/* ============================================= */
-/*  MELHOR LEGIBILIDADE NO CELULAR (obrigatório)  */
-/* ============================================= */
+/* ================================================= */
+/*  CORREÇÃO FINAL – TEXTO MAIS RESPIRADO NO CELULAR  */
+/* ================================================= */
 
 @media (max-width: 768px) {
     .card {
-        margin: 20px 12px !important;     /* dá mais espaço nas laterais */
-        padding: 22px 18px !important;   /* aumenta o “ar” interno */
-        border-radius: 16px !important;
-        font-size: 1.15rem !important;   /* texto um pouco maior no celular */
-        line-height: 1.75 !important;    /* espaçamento entre linhas mais confortável */
+        margin: 22px 15px !important;     /* espaço lateral maior */
+        padding: 28px 24px !important;    /* ← aqui é o segredo: muito mais ar interno */
+        border-radius: 20px !important;
+        font-size: 1.22rem !important;    /* texto maior e confortável */
+        line-height: 1.85 !important;     /* espaçamento entre linhas generoso */
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08) !important;
     }
 
     .card h3 {
-        font-size: 1.45rem !important;
-        margin-bottom: 18px !important;
+        font-size: 1.55rem !important;
+        margin-bottom: 22px !important;
+        line-height: 1.4 !important;
     }
 
-    .card p, .card ul, .card blockquote {
-        margin-bottom: 18px !important;
+    .card p,
+    .card ul,
+    .card blockquote {
+        margin-bottom: 22px !important;
     }
 
-    /* evita que imagens transborem da tela */
+    /* títulos das páginas (ex: "Nossa Senhora de Lourdes") */
+    h2 {
+        font-size: 2rem !important;
+        margin: 30px 20px 25px !important;
+        padding-bottom: 15px !important;
+    }
+
+    /* frase final em itálico */
+    p[style*="text-align:center"][style*="italic"] {
+        margin: 60px 25px 40px !important;
+        font-size: 1.35rem !important;
+        line-height: 1.9 !important;
+    }
+
+    /* garante que imagens nunca estouram */
     .card img {
         max-width: 100% !important;
         height: auto !important;
-        border-radius: 12px;
-        margin: 15px 0;
-    }
-
-    /* títulos das páginas ficam mais respirados */
-    h2 {
-        font-size: 1.8rem !important;
-        margin: 25px 15px 20px !important;
-        padding-bottom: 12px !important;
-    }
-
-    /* frase final em itálico no rodapé */
-    p[style*="text-align:center"][style*="italic"] {
-        margin: 50px 20px 30px !important;
-        font-size: 1.25rem !important;
+        border-radius: 16px;
+        margin: 20px 0;
     }
 }
 
-/* Para telas bem pequenas (ex.: iPhone SE, Android antigos) */
-@media (max-width: 480px) {
+/* Telas muito pequenas (iPhone SE, Galaxy A02s, etc.) */
+@media (max-width: 380px) {
     .card {
-        margin: 18px 8px !important;
-        padding: 20px 15px !important;
-        font-size: 1.18rem !important;
+        margin: 18px 10px !important;
+        padding: 26px 20px !important;
     }
-    h2 { font-size: 1.7rem !important; }
+    h2 { font-size: 1.85rem !important; }
 }
