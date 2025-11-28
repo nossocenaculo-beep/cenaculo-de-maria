@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cenáculo de Maria</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- MENU LATERAL FIXO -->
+  <nav id="sidebar">
+    <h2>Cenáculo de Maria</h2>
+    
+    <div class="menu-item">
+      <div onclick="toggleSubmenu('aparicoes')">Aparições Marianas</div>
+      <div id="aparicoes" class="submenu">
+        <a href="#" onclick="loadPage('aparicao/pilar')"      >NSra. Pilar</a>
+        <a href="#" onclick="loadPage('aparicao/herford')"    >NSra. Herford</a>
+        <a href="#" onclick="loadPage('aparicao/carmo')"      >NSra. Carmo</a>
+        <a href="#" onclick="loadPage('aparicao/caravaggio')" >NSra. Caravaggio</a>
+        <a href="#" onclick="loadPage('aparicao/guadalupe')"  >NSra. Guadalupe</a>
+        <a href="#" onclick="loadPage('aparicao/calanda')"    >Calanda</a>
+        <a href="#" onclick="loadPage('aparicao/coromoto')"   >NSra. Coromoto</a>
+        <a href="#" onclick="loadPage('aparicao/aparecida')"  >NSra. Aparecida</a>
+        <a href="#" onclick="loadPage('aparicao/dosmilagres')">NSra. dos Milagres</a>
+        <a href="#" onclick="loadPage('aparicao/la-salette')" >NSra. La Salette</a>
+        <a href="#" onclick="loadPage('aparicao/lourdes')"    >NSra. Lourdes</a>
+      </div>
+    </div>
+ <!-- 
+    <div class="menu-item">
+      <div onclick="toggleSubmenu('dogmas/doutrina')">Doutrina Mariana</div>
+      <div id="doutrina" class="submenu">
+        <a href="#" onclick="loadPage('dogmas/imaculada')">Imaculada Conceição</a>
+        <a href="#" onclick="loadPage('dogmas/assuncao')">Assunção de Maria</a>
+        <a href="#" onclick="loadPage('dogmas/maternidade')">Maternidade Divina</a>
+        <a href="#" onclick="loadPage('dogmas/corredentora')">Co-redentora</a>
+      </div>
+    </div>
+
+   <div class="menu-item">
+      <div onclick="toggleSubmenu('devocao')">Devoção</div>
+      <div id="devocao" class="submenu">
+        <a href="#" onclick="loadPage('rosario')">Santo Rosário</a>
+        <a href="#" onclick="loadPage('escapulario')">Escapulário do Carmo</a>
+        <a href="#" onclick="loadPage('consagracao')">Consagração a Maria</a>
+      </div>
+    </div>
+
+    <div class="menu-item">
+      <div onclick="toggleSubmenu('santos')">Santos Marianos</div>
+      <div id="santos" class="submenu">
+        <a href="#" onclick="loadPage('luis')">São Luís de Montfort</a>
+        <a href="#" onclick="loadPage('maximiliano')">São Maximiliano Kolbe</a>
+        <a href="#" onclick="loadPage('joao')">São João Paulo II</a>
+      </div>
+    </div> -->
+  </nav>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main id="main">
+    <!-- Cabeçalho com imagem de fundo fixa -->
+    <header class="hero">
+      <h1>Cenáculo de Maria</h1>
+    </header>
+
+    <div class="content-area" id="conteudo">
+      <!-- O conteúdo será carregado aqui via JavaScript -->
+      <div class="loading">Carregando...</div>
+    </div>
+
+    <footer>
+      <div>Cenáculo de Maria — Site Católico devocional e doutrinário</div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
