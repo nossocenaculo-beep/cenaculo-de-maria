@@ -35,3 +35,25 @@ function loadPage(pageId) {
 document.addEventListener('DOMContentLoaded', () => {
   loadPage('home');
 });
+
+let baseFontSize = 100; // tamanho base em %
+
+function changeFontSize(step) {
+    baseFontSize += step * 10;           // aumenta/diminui 10% por clique
+    if (baseFontSize < 70) baseFontSize = 70;   // limite mínimo
+    if (baseFontSize > 180) baseFontSize = 180; // limite máximo
+    
+    document.documentElement.style.fontSize = baseFontSize + '%';
+    
+    // salva a preferência do usuário no celular
+    localStorage.setItem('userFontSize', baseFontSize);
+}
+
+// Carrega a preferência salva quando abre a página
+window.addEventListener('load', function() {
+    const saved = localStorage.getItem('userFontSize');
+    if (saved) {
+        baseFontSize = parseInt(saved);
+        document.documentElement.style.fontSize = baseFontSize + '%';
+    }
+});
