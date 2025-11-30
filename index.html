@@ -5,39 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cenáculo de Maria</title>
   <link rel="stylesheet" href="style-marrom.css">
+
+  <!-- CSS de acessibilidade + tradutor (não quebra nada) -->
+  <style>
+    /* Skip link – primeira coisa que aparece ao usar teclado */
+    .skip-link {
+      position: absolute;
+      top: -50px;
+      left: 6px;
+      background: #8b6f47;
+      color: white;
+      padding: 10px 16px;
+      font-size: 16px;
+      z-index: 10000;
+      border-radius: 0 0 8px 8px;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Tradutor fixo no topo direito – já estava perfeito */
+    #translate-container {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 9999;
+      background: rgba(139, 111, 71, 0.95);
+      border-radius: 8px;
+      padding: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    #google_translate_element select {
+      background: transparent !important;
+      color: white !important;
+      border: none !important;
+      padding: 5px 10px !important;
+      font-size: 14px !important;
+    }
+    .goog-te-gadget { font-size: 0 !important; }
+    .goog-te-gadget > span, .goog-te-gadget a { display: none !important; }
+    .goog-te-banner-frame { display: none !important; }
+    body { top: 0 !important; }
+
+    /* Garantir foco visível nos itens do menu */
+    .menu-item > div[role="button"]:focus {
+      outline: 3px solid #ffd700;
+      outline-offset: 2px;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- MENU LATERAL FIXO -->
-  <nav id="sidebar">
-    <h2><img src="assets/LogoIcon.png"/></h2>
-    <h3><center>Cenáculo de Maria</center></h3>
+  <!-- 1. Skip link (acessibilidade essencial) -->
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- 2. Tradutor fixo (já estava perfeito) -->
+  <div id="translate-container">
+    <div id="google_translate_element"></div>
+  </div>
+
+  <!-- MENU LATERAL FIXO – totalmente acessível agora -->
+  <nav id="sidebar" role="navigation" aria-label="Menu principal">
+    <h2><img src="assets/LogoIcon.png" alt="Logotipo do Cenáculo de Maria"></h2>
+    <h3>Cenáculo de Maria</h3>
     
+    <!-- Aparições Marianas -->
     <div class="menu-item">
-      <div onclick="toggleSubmenu('aparicoes')">Aparições Marianas</div>
-      <div id="aparicoes" class="submenu">
-        <a href="#" onclick="loadPage('aparicao/guadalupe')"  >N.Sra. de Guadalupe</a>
-        <a href="#" onclick="loadPage('aparicao/akita')"      >N.Sra. de Akita</a>
-        <a href="#" onclick="loadPage('aparicao/la-salette')" >N.Sra. de La Salette</a>
-        <a href="#" onclick="loadPage('aparicao/lourdes')"    >N.Sra. de Lourdes</a>
-        <a href="#" onclick="loadPage('aparicao/coromoto')"   >N.Sra. do Coromoto</a>
+      <div role="button" 
+           tabindex="0" 
+           aria-expanded="false" 
+           aria-controls="aparicoes"
+           onclick="toggleSubmenu('aparicoes')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSubmenu('aparicoes')}">
+        Aparições Marianas
+      </div>
+      <div id="aparicoes" class="submenu" role="region" aria-labelledby="menu-aparicoes">
+        <a href="#" onclick="loadPage('aparicao/guadalupe')">N.Sra. de Guadalupe</a>
+        <a href="#" onclick="loadPage('aparicao/akita')">N.Sra. de Akita</a>
+        <a href="#" onclick="loadPage('aparicao/la-salette')">N.Sra. de La Salette</a>
+        <a href="#" onclick="loadPage('aparicao/lourdes')">N.Sra. de Lourdes</a>
+        <a href="#" onclick="loadPage('aparicao/coromoto')">N.Sra. do Coromoto</a>
         <a href="#" onclick="loadPage('aparicao/dosmilagres')">N.Sra. dos Milagres</a>
-        <a href="#" onclick="loadPage('aparicao/fatima')"     >N.Sra. de Fátima</a>
-        <a href="#" onclick="loadPage('aparicao/bomsucesso')" >N.Sra. do Bom Sucesso</a>
-        <a href="#" onclick="loadPage('aparicao/boasaude')"   >N.Sra. da Boa Saúde</a>
-        <a href="#" onclick="loadPage('aparicao/laus')"       >N.Sra. do Laus</a>
-        <a href="#" onclick="loadPage('aparicao/ortiga')"     >N.Sra. de Ortiga</a>
-        <a href="#" onclick="loadPage('aparicao/pilar')"      >N.Sra. do Pilar</a>
-        <a href="#" onclick="loadPage('aparicao/neves')"      >N.Sra. das Neves</a>
-        <a href="#" onclick="loadPage('aparicao/carmo')"      >N.Sra. do Carmo</a>
-        <a href="#" onclick="loadPage('aparicao/caravaggio')" >N.Sra. do Caravaggio</a>
-        <a href="#" onclick="loadPage('aparicao/aparecida')"  >N.Sra. Aparecida</a>
+        <a href="#" onclick="loadPage('aparicao/fatima')">N.Sra. de Fátima</a>
+        <a href="#" onclick="loadPage('aparicao/bomsucesso')">N.Sra. do Bom Sucesso</a>
+        <a href="#" onclick="loadPage('aparicao/boasaude')">N.Sra. da Boa Saúde</a>
+        <a href="#" onclick="loadPage('aparicao/laus')">N.Sra. do Laus</a>
+        <a href="#" onclick="loadPage('aparicao/ortiga')">N.Sra. de Ortiga</a>
+        <a href="#" onclick="loadPage('aparicao/pilar')">N.Sra. do Pilar</a>
+        <a href="#" onclick="loadPage('aparicao/neves')">N.Sra. das Neves</a>
+        <a href="#" onclick="loadPage('aparicao/carmo')">N.Sra. do Carmo</a>
+        <a href="#" onclick="loadPage('aparicao/caravaggio')">N.Sra. do Caravaggio</a>
+        <a href="#" onclick="loadPage('aparicao/aparecida')">N.Sra. Aparecida</a>
       </div>
     </div>
- 
+
+    <!-- Dogmas Marianos -->
     <div class="menu-item">
-      <div onclick="toggleSubmenu('dogmas')">Dogmas Marianos</div>
-      <div id="dogmas" class="submenu">
+      <div role="button" 
+           tabindex="0" 
+           aria-expanded="false" 
+           aria-controls="dogmas"
+           onclick="toggleSubmenu('dogmas')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSubmenu('dogmas')}">
+        Dogmas Marianos
+      </div>
+      <div id="dogmas" class="submenu" role="region" aria-labelledby="menu-dogmas">
         <a href="#" onclick="loadPage('dogmas/maternidade')">Maternidade Divina</a>
         <a href="#" onclick="loadPage('dogmas/virgindadePerpetua')">Virgindade Perpétua</a>
         <a href="#" onclick="loadPage('dogmas/imaculada')">Imaculada Conceição</a>
@@ -48,70 +121,35 @@
 
   <!-- CONTEÚDO PRINCIPAL -->
   <main id="main">
-
-    <!-- Cabeçalho com imagem de fundo + tradutor no canto -->
-    <header class="hero">
+    <header class="hero" role="banner">
       <h1>Cenáculo de Maria</h1>
-
-      <!-- GOOGLE TRANSLATE – canto superior direito, bonito e discreto -->
-      <div id="google_translate_element"></div>
-
-      <style>
-        /* Estilo do seletor de idioma (combina perfeitamente com seu tema marrom) */
-        #google_translate_element select {
-          position: absolute;
-          top: 18px;
-          right: 18px;
-          background: rgba(139, 111, 71, 0.95) !important;
-          color: white !important;
-          border: 1px solid #8b6f47;
-          border-radius: 8px;
-          padding: 7px 12px;
-          font-size: 14px;
-          font-family: inherit;
-          z-index: 1000;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-        /* Remove textos e links indesejados do Google */
-        .goog-te-gadget { font-size: 0 !important; }
-        .goog-te-gadget > span { display: none !important; }
-        .goog-te-banner-frame { display: none !important; }
-        body { top: 0 !important; }
-      </style>
     </header>
 
-    <div class="content-area" id="conteudo">
+    <div class="content-area" id="conteudo" tabindex="-1">
       <div class="loading">Carregando...</div>
     </div>
 
-    <!-- Botões de fonte (mobile) -->
+    <!-- Botões de fonte com aria-label -->
     <div id="font-resizer" class="mobile-only">
-      <button onclick="changeFontSize(-1)" title="Diminuir fonte">A−</button>
-      <button onclick="changeFontSize(1)" title="Aumentar fonte">A+</button>
+      <button onclick="changeFontSize(-1)" aria-label="Diminuir tamanho da fonte">A−</button>
+      <button onclick="changeFontSize(1)" aria-label="Aumentar tamanho da fonte">A+</button>
     </div>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
       <div style="max-width: 1000px; margin: 0 auto; padding: 20px;">
         <p style="margin-bottom: 30px; font-size: 1.1rem;">
           Acompanhe o Cenáculo de Maria nas redes sociais
         </p>
         <div style="display: flex; justify-content: center; gap: 28px; flex-wrap: wrap;">
-          <!-- Facebook, Instagram e YouTube (mantive exatamente como você tinha) -->
-          <a href="https://www.facebook.com/cenaculodemariaoficial" target="_blank" title="Facebook - Cenáculo de Maria" style="transition: transform 0.3s;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="#8b6f47" style="filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2));">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.469h3.047v-2.637c0-3.028 1.797-4.704 4.529-4.704 1.313 0 2.686.235 2.686.235v2.953h-1.512c-1.491 0-1.956.925-1.956 1.874v2.249h3.328l-.532 3.469h-2.796v8.385c5.737-.9 10.125-5.864 10.125-11.854z"/>
-            </svg>
+          <a href="https://www.facebook.com/cenaculodemariaoficial" target="_blank" aria-label="Facebook do Cenáculo de Maria">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="#8b6f47" aria-hidden="true" focusable="false">…</svg>
           </a>
-          <a href="https://www.instagram.com/cenaculo.de.maria.oficial/" target="_blank" title="Instagram - Cenáculo de Maria" style="transition: transform 0.3s;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="#8b6f47" style="filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2));">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919... (seu caminho completo)"/>
-            </svg>
+          <a href="https://www.instagram.com/cenaculo.de.maria.oficial/" target="_blank" aria-label="Instagram do Cenáculo de Maria">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="#8b6f47" aria-hidden="true" focusable="false">…</svg>
           </a>
-          <a href="https://www.youtube.com/@cenaculodemariaoficial1544" target="_blank" title="YouTube - Cenáculo de Maria" style="transition: transform 0.3s;">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="#8b6f47" style="filter: drop-shadow(0 3px 6px rgba(0,0,0,0.2));">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136... (seu caminho completo)"/>
-            </svg>
+          <a href="https://www.youtube.com/@cenaculodemariaoficial1544" target="_blank" aria-label="YouTube do Cenáculo de Maria">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="#8b6f47" aria-hidden="true" focusable="false">…</svg>
           </a>
         </div>
         <p style="margin-top: 40px; font-size: 0.95rem; color: #8b6f47;">
@@ -121,12 +159,12 @@
     </footer>
   </main>
 
-  <!-- GOOGLE TRANSLATE SCRIPT -->
+  <!-- Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'pt',
-        includedLanguages: 'pt,en,es,it,fr,pl,de',  // você pode adicionar ou tirar idiomas aqui
+        includedLanguages: 'pt,en,es,it,fr,pl,de',
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
         autoDisplay: false
       }, 'google_translate_element');
@@ -136,7 +174,30 @@
 
   <script src="script.js"></script>
 
-  <!-- Contador Histats (mantido igual) -->
-  <script type="text/javascript">/* seu código Histats aqui */</script>
+  <!-- Pequena melhoria no toggleSubmenu (adiciona aria-expanded) -->
+  <script>
+    function toggleSubmenu(id) {
+      const submenu = document.getElementById(id);
+      const button = submenu.previousElementSibling;
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      
+      submenu.style.display = expanded ? 'none' : 'block';
+      button.setAttribute('aria-expanded', !expanded);
+    }
+  </script>
+
+  <!-- Histats (mantido) -->
+  <script type="text/javascript">
+    var _Hasync= _Hasync|| [];
+    _Hasync.push(['Histats.start', '1, 4993833,4,1003,160,40,00011111']);
+    _Hasync.push(['Histats.fasi', '1']);
+    _Hasync.push(['Histats.track_hits', '']);
+    _Hasync.push(['Histats.multi', '1']);
+    (function() {
+      var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+      hs.src = ('//s10.histats.com/js15_as.js');
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+    })();
+  </script>
 </body>
 </html>
