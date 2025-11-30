@@ -72,32 +72,38 @@
     
     <!-- Aparições Marianas -->
     <div class="menu-item">
-      <div role="button" 
-           tabindex="0" 
-           aria-expanded="false" 
-           aria-controls="aparicoes"
-           onclick="toggleSubmenu('aparicoes')"
-           onkeypress="if(event.key==='Enter'||event.key===' ') {event.preventDefault();toggleSubmenu('aparicoes')}">
-        Aparições Marianas
-      </div>
-      <div id="aparicoes" class="submenu" role="region" aria-labelledby="menu-aparicoes">
-        <a href="#" onclick="loadPage('aparicao/guadalupe')"  >N.Sra. de Guadalupe</a>
-        <a href="#" onclick="loadPage('aparicao/akita')"      >N.Sra. de Akita</a>
-        <a href="#" onclick="loadPage('aparicao/la-salette')" >N.Sra. de La Salette</a>
-        <a href="#" onclick="loadPage('aparicao/lourdes')"    >N.Sra. de Lourdes</a>
-        <a href="#" onclick="loadPage('aparicao/coromoto')"   >N.Sra. do Coromoto</a>
-        <a href="#" onclick="loadPage('aparicao/dosmilagres')">N.Sra. dos Milagres</a>
-        <a href="#" onclick="loadPage('aparicao/fatima')"     >N.Sra. de Fátima</a>
-        <a href="#" onclick="loadPage('aparicao/bomsucesso')" >N.Sra. do Bom Sucesso</a>
-        <a href="#" onclick="loadPage('aparicao/boasaude')"   >N.Sra. da Boa Saúde</a>
-        <a href="#" onclick="loadPage('aparicao/laus')"       >N.Sra. do Laus</a>
-        <a href="#" onclick="loadPage('aparicao/ortiga')"     >N.Sra. de Ortiga</a>
-        <a href="#" onclick="loadPage('aparicao/pilar')"      >N.Sra. do Pilar</a>
-        <a href="#" onclick="loadPage('aparicao/neves')"      >N.Sra. das Neves</a>
-        <a href="#" onclick="loadPage('aparicao/carmo')"      >N.Sra. do Carmo</a>
-        <a href="#" onclick="loadPage('aparicao/caravaggio')" >N.Sra. do Caravaggio</a>
-        <a href="#" onclick="loadPage('aparicao/aparecida')"  >N.Sra. Aparecida</a>
-      </div>
+      <div onclick="toggleSubmenu('aparicoes')">Aparições Marianas</div>
+      <div id="aparicoes" class="submenu">
+          <a href="#" onclick="loadPage('aparicao/aprovadas/guadalupe')"  >N.Sra. de Guadalupe</a>
+          <a href="#" onclick="loadPage('aparicao/aprovadas/la-salette')" >N.Sra. do Bom Sucesso</a>
+          <a href="#" onclick="loadPage('aparicao/aprovadas/lourdes')"    >N.Sra. da Medalha Milagrosa</a>
+          <a href="#" onclick="loadPage('aparicao/aprovadas/coromoto')"   >N.Sra. de La Salette</a>
+          <a href="#" onclick="loadPage('aparicao/aprovadas/dosmilagres')">N.Sra. de Lourdes</a>
+          <a href="#" onclick="loadPage('aparicao/aprovadas/fatima')"     >N.Sra. do Bom Conselho</a>
+          <a href="#" onclick="loadPage('aparicao/aprovadas/bomsucesso')" >N.Sra. de Pontmain</a>
+          <a href="#" onclick="loadPage('aparicao/aprovadas/boasaude')"   >N.Sra. de Gietrzwałd</a>
+          <a href="#" onclick="loadPage('aparicao/aprovadas/laus')"       >N.Sra. de Knock</a>
+          <a href="#" onclick="loadPage('aparicao/aprovadas/ortiga')"     >N.Sra. de Fátima</a>
+          <a href="#" onclick="loadPage('aparicao/aprovadas/laus')"       >N.Sra. de Beauraing</a>
+          <a href="#" onclick="loadPage('aparicao/aprovadas/ortiga')"     >N.Sra. de Banneux</a>
+		      <a href="#" onclick="loadPage('aparicao/aprovadas/ortiga')"     >N.Sra. de Kibeho</a>
+<!--
+          <a href="#" onclick="loadPage('aparicao/veneradas/cuapa')"  >N.Sra. de Cuapa</a>
+          <a href="#" onclick="loadPage('aparicao/veneradas/rosario')" >N.Sra. do Rosário de San Nicolás</a>
+          <a href="#" onclick="loadPage('aparicao/veneradas/medjugorje')" >N.Sra. de Medjugorje</a>
+          <a href="#" onclick="loadPage('aparicao/veneradas/pellevoisin')">N.Sra. de Pellevoisin</a>
+          <a href="#" onclick="loadPage('aparicao/veneradas/rosariotaggia')">N.Sra. do Rosário de Taggia</a>
+          <a href="#" onclick="loadPage('aparicao/veneradas/rosamistica')">N.Sra. da Rosa Mística</a>
+          <a href="#" onclick="loadPage('aparicao/veneradas/scoglio')" >N.Sra. do Scoglio</a>
+-->
+          <a href="#" onclick="loadPage('aparicao/outras/akita')"      >N.Sra. de Akita</a>
+          <a href="#" onclick="loadPage('aparicao/outras/pilar')"      >N.Sra. do Pilar</a>
+          <a href="#" onclick="loadPage('aparicao/outras/neves')"      >N.Sra. das Neves</a>
+          <a href="#" onclick="loadPage('aparicao/outras/carmo')"      >N.Sra. do Carmo</a>
+          <a href="#" onclick="loadPage('aparicao/outras/caravaggio')" >N.Sra. do Caravaggio</a>
+          <a href="#" onclick="loadPage('aparicao/outras/aparecida')"  >N.Sra. Aparecida</a>
+      
+        </div>
     </div>
 
     <!-- Dogmas Marianos -->
