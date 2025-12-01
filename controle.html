@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Controle - Cenáculo de Maria</title>
+  <link rel="stylesheet" href="style-marrom.css"> <!-- Reusa seu CSS -->
+  <style>
+    .stats { max-width: 800px; margin: 20px auto; padding: 20px; background: #f5f5f5; border-radius: 8px; }
+    .stat-item { display: flex; justify-content: space-between; margin: 10px 0; padding: 10px; background: white; border: 1px solid #8b6f47; }
+    #login-form { max-width: 400px; margin: 100px auto; padding: 20px; background: white; border: 1px solid #8b6f47; }
+    input[type="password"] { width: 100%; padding: 10px; margin: 10px 0; }
+    button { background: #8b6f47; color: white; padding: 10px; border: none; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div id="login-form" style="display: block;">
+    <h2>Login no Painel de Controle</h2>
+    <input type="password" id="senha" placeholder="Digite a senha">
+    <button onclick="verificarSenha()">Entrar</button>
+  </div>
+  <div id="stats-section" style="display: none;">
+    <h1>Painel de Controle - Estatísticas</h1>
+    <div class="stats">
+      <div class="stat-item"><strong>Total de Visitas:</strong> <span id="total-visitas">Carregando...</span></div>
+      <div class="stat-item"><strong>Visitas Únicas:</strong> <span id="unicas">Carregando...</span></div>
+      <div class="stat-item"><strong>Page Views Hoje:</strong> <span id="hoje">Carregando...</span></div>
+      <div class="stat-item"><strong>Visitas no Mês:</strong> <span id="mes">Carregando...</span></div>
+    </div>
+    <button onclick="location.reload()">Atualizar Stats</button>
+    <button onclick="logout()">Sair</button>
+  </div>
+
+  <script>
+    const SENHA_CORRETA = 'sua_senha_aqui'; // Mude isso por uma senha forte!
+    function verificarSenha() {
+      if (document.getElementById('senha').value === SENHA_CORRETA) {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('stats-section').style.display = 'block';
+        carregarStats();
+      } else {
+        alert('Senha incorreta!');
+      }
+    }
+    function logout() {
+      document.getElementById('login-form').style.display = 'block';
+      document.getElementById('stats-section').style.display = 'none';
+    }
+    // Função para carregar stats (chama o backend)
+    function carregarStats() {
+      fetch('/api/stats') // Endpoint que vamos criar
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('total-visitas').textContent = data.total_visits || 'N/A';
+          document.getElementById('unicas').textContent = data.unique_visitors || 'N/A';
+          document.getElementById('hoje').textContent = data.today_views || 'N/A';
+          document.getElementById('mes').textContent = data.monthly || 'N/A';
+        })
+        .catch(err => console.error('Erro ao carregar stats:', err));
+    }
+  </script>
+</body>
+</html>
